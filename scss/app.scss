@@ -1,0 +1,122 @@
+@import "settings";
+@import "foundation";
+
+// Or selectively include components
+// @import
+//   "foundation/components/accordion",
+//   "foundation/components/alert-boxes",
+//   "foundation/components/block-grid",
+//   "foundation/components/breadcrumbs",
+//   "foundation/components/button-groups",
+//   "foundation/components/buttons",
+//   "foundation/components/clearing",
+//   "foundation/components/dropdown",
+//   "foundation/components/dropdown-buttons",
+//   "foundation/components/flex-video",
+//   "foundation/components/forms",
+//   "foundation/components/grid",
+//   "foundation/components/inline-lists",
+//   "foundation/components/joyride",
+//   "foundation/components/keystrokes",
+//   "foundation/components/labels",
+//   "foundation/components/magellan",
+//   "foundation/components/orbit",
+//   "foundation/components/pagination",
+//   "foundation/components/panels",
+//   "foundation/components/pricing-tables",
+//   "foundation/components/progress-bars",
+//   "foundation/components/reveal",
+//   "foundation/components/side-nav",
+//   "foundation/components/split-buttons",
+//   "foundation/components/sub-nav",
+//   "foundation/components/switches",
+//   "foundation/components/tables",
+//   "foundation/components/tabs",
+//   "foundation/components/thumbs",
+//   "foundation/components/tooltips",
+//   "foundation/components/top-bar",
+//   "foundation/components/type",
+//   "foundation/components/offcanvas",
+//   "foundation/components/visibility";
+
+/*
+ * Mixins
+ *
+ */
+
+// Make link inside div make the entire div linkable
+@mixin linkable_block() {
+ a {
+    position: absolute;
+    width: 100%;
+    height:100%;
+    top: 0;
+    left: 0;
+    text-decoration: none;
+    z-index: 10;
+    background-color: white;
+    opacity: 0;
+    filter: alpha(opacity=1);
+  }
+}
+
+/*
+ * Home Page
+ *
+ */
+
+// Change pointers black
+
+$image-path: "../bower_components/slick.js/slick/";
+
+// Hack foundation's image-url function
+
+@function image-url($url) {
+  @return url($image-path + $url);
+}
+
+$slick-arrow-color: black;
+$slick-font-path: "../bower_components/slick.js/slick/fonts/";
+@import "../bower_components/slick.js/slick/slick-theme";
+
+// Revert image url back
+@function image-url($url) {
+  @return unquote("url(../img/#{$url})");
+}
+
+// Center images in slider
+
+.home_slider {
+  img {
+    margin: auto;
+  }
+  h5 {
+    text-align: center;
+  }
+}
+
+// Make bottom home blocks linkable
+
+div.home_quad_blocks {
+  @include linkable_block();
+}
+
+/*
+ * Content Page
+ *
+ */
+
+.header_logo {
+  margin: rem-calc(17) 0;
+}
+
+.social_icons {
+  margin: rem-calc(55);
+}
+
+.blog_content {
+  img {
+    padding-left: 0.9375rem;
+    padding-right: 0.9375rem;
+  }
+}
