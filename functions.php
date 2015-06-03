@@ -1,7 +1,7 @@
-<?php
+<?php defined( 'ABSPATH' ) or die( 'No longer allowed at the Chesterfield' );
 /*
- *  Author: Todd Motto | @toddmotto
- *  URL: html5blank.com | @html5blank
+ *  Author: Zach Metcalf | @zmetcalf and Todd Motto | @toddmotto
+ *  URL: chesterfieldagency.com  and html5blank.com | @html5blank
  *  Custom functions, support, custom post types and more.
  */
 
@@ -340,12 +340,12 @@ function html5blankcomments($comment, $args, $depth)
 \*------------------------------------*/
 
 // Add Actions
-add_action('init', 'html5blank_header_scripts'); // Add Custom Scripts to wp_head
-add_action('wp_print_scripts', 'html5blank_conditional_scripts'); // Add Conditional Page Scripts
+// add_action('init', 'html5blank_header_scripts'); // Add Custom Scripts to wp_head
+// add_action('wp_print_scripts', 'html5blank_conditional_scripts'); // Add Conditional Page Scripts
 add_action('get_header', 'enable_threaded_comments'); // Enable Threaded Comments
-add_action('wp_enqueue_scripts', 'html5blank_styles'); // Add Theme Stylesheet
+// add_action('wp_enqueue_scripts', 'html5blank_styles'); // Add Theme Stylesheet
 add_action('init', 'register_html5_menu'); // Add HTML5 Blank Menu
-add_action('init', 'create_post_type_html5'); // Add our HTML5 Blank Custom Post Type
+// add_action('init', 'create_post_type_html5'); // Add our HTML5 Blank Custom Post Type
 add_action('widgets_init', 'my_remove_recent_comments_style'); // Remove inline Recent Comment Styles from wp_head()
 add_action('init', 'html5wp_pagination'); // Add our HTML5 Pagination
 
@@ -376,7 +376,7 @@ add_filter('the_category', 'remove_category_rel_from_category_list'); // Remove 
 add_filter('the_excerpt', 'shortcode_unautop'); // Remove auto <p> tags in Excerpt (Manual Excerpts only)
 add_filter('the_excerpt', 'do_shortcode'); // Allows Shortcodes to be executed in Excerpt (Manual Excerpts only)
 add_filter('excerpt_more', 'html5_blank_view_article'); // Add 'View Article' button instead of [...] for Excerpts
-add_filter('show_admin_bar', 'remove_admin_bar'); // Remove Admin bar
+// add_filter('show_admin_bar', 'remove_admin_bar'); // Remove Admin bar
 add_filter('style_loader_tag', 'html5_style_remove'); // Remove 'text/css' from enqueued stylesheet
 add_filter('post_thumbnail_html', 'remove_thumbnail_dimensions', 10); // Remove width and height dynamic attributes to thumbnails
 add_filter('image_send_to_editor', 'remove_thumbnail_dimensions', 10); // Remove width and height dynamic attributes to post images
@@ -449,4 +449,31 @@ function html5_shortcode_demo_2($atts, $content = null) // Demo Heading H2 short
     return '<h2>' . $content . '</h2>';
 }
 
-?>
+//--------------------------------------------------------------------------------------------
+// Start Rebuilding Together Metro Denver Theme
+
+
+/*------------------------------------*\
+  Queue up CSS and JS
+\*------------------------------------*/
+
+function rtmd_theme_scripts() {
+  wp_enqueue_style( 'rtmd_main_style', get_template_directory_uri() .
+                    '/css/app.css' );
+  wp_enqueue_style( 'rtmd_main_style', get_template_directory_uri() .
+                    '/bower_components/fontawesome/css/font-awesome.min.css' );
+  wp_enqueue_script( 'rtmd_jquery', get_template_directory_uri() .
+                     '/bower_components/jquery/dist/jquery.min.js', false, '0.0.1', true );
+  wp_enqueue_script( 'foundation', get_template_directory_uri() .
+                     '/bower_components/foundation/js/foundation.min.js', array('rtmd_jquery'), '0.0.1', true );
+  wp_enqueue_script( 'fastclick', get_template_directory_uri() .
+                     '/bower_components/foundation/js/vendor/fastclick.js', array('rtmd_jquery'), '0.0.1', true );
+  wp_enqueue_script( 'modernizr', get_template_directory_uri() .
+                     '/bower_components/modernizr/modernizr.js', false, '0.0.1' );
+  wp_enqueue_script( 'slick', get_template_directory_uri() .
+                     '/bower_components/slick.js/slick/slick.min.js', array('rtmd_jquery'), '0.0.1', true );
+  wp_enqueue_script( 'rtmd_main_script', get_template_directory_uri() .
+                     '/js/app.js', array('rtmd_jquery', 'slick'), '0.0.1', true );
+}
+
+add_action( 'wp_enqueue_scripts', 'rtmd_theme_scripts' );
