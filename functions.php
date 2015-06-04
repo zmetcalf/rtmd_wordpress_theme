@@ -477,3 +477,104 @@ function rtmd_theme_scripts() {
 }
 
 add_action( 'wp_enqueue_scripts', 'rtmd_theme_scripts' );
+
+
+// Home navigation
+
+// Custom walker for button menu
+
+class Walker_Home_Button_Menu extends Walker {
+
+  // Tell Walker where to inherit it's parent and id values
+  var $db_fields = array(
+    'parent' => 'menu_item_parent',
+    'id'     => 'db_id'
+  );
+
+  /**
+   * At the start of each element, output a <li> and <a> tag structure.
+   *
+   * Note: Menu objects include url and title properties, so we will use those.
+   */
+  function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+    $output .= sprintf( "\n<li><a href='%s'%s>%s</a></li>\n",
+      $item->url,
+      ( $item->object_id === get_the_ID() ) ? ' class="button radius"' : '',
+      $item->title
+    );
+  }
+}
+
+function home_nav()
+{
+	wp_nav_menu(
+	array(
+		'theme_location'  => 'home_header_menu',
+		'menu'            => '',
+		'container'       => '',
+		'container_class' => '',
+		'container_id'    => '',
+		'menu_class'      => '',
+		'menu_id'         => '',
+		'echo'            => true,
+		'fallback_cb'     => 'wp_page_menu',
+		'before'          => '',
+		'after'           => '',
+		'link_before'     => '',
+		'link_after'      => '',
+		'items_wrap'      => '<ul class="button-group right">%3$s</ul>',
+		'depth'           => 0,
+		'walker'          => 'Walker_Home_Button_Menu'
+		)
+	);
+}
+
+// Content nav
+function content_nav()
+{
+	wp_nav_menu(
+	array(
+		'theme_location'  => 'content_header_menu',
+		'menu'            => '',
+		'container'       => 'div',
+		'container_class' => 'menu-{menu slug}-container',
+		'container_id'    => '',
+		'menu_class'      => 'menu',
+		'menu_id'         => '',
+		'echo'            => true,
+		'fallback_cb'     => 'wp_page_menu',
+		'before'          => '',
+		'after'           => '',
+		'link_before'     => '',
+		'link_after'      => '',
+		'items_wrap'      => '<ul>%3$s</ul>',
+		'depth'           => 0,
+		'walker'          => ''
+		)
+	);
+}
+
+// Off Canvas Nav
+function off_canvas_nav()
+{
+	wp_nav_menu(
+	array(
+		'theme_location'  => 'off_canvas_header_menu',
+		'menu'            => '',
+		'container'       => 'div',
+		'container_class' => 'menu-{menu slug}-container',
+		'container_id'    => '',
+		'menu_class'      => 'menu',
+		'menu_id'         => '',
+		'echo'            => true,
+		'fallback_cb'     => 'wp_page_menu',
+		'before'          => '',
+		'after'           => '',
+		'link_before'     => '',
+		'link_after'      => '',
+		'items_wrap'      => '<ul>%3$s</ul>',
+		'depth'           => 0,
+		'walker'          => ''
+		)
+	);
+}
