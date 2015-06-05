@@ -485,6 +485,7 @@ add_action( 'wp_enqueue_scripts', 'rtmd_theme_scripts' );
 
 function rtmd_menus() {
   register_nav_menu( 'home_header_menu', __( 'Home Menu', 'rtmd_theme' ) );
+  register_nav_menu( 'content_header_menu', __( 'Content Pages Menu', 'rtmd_theme' ) );
 }
 
 add_action( 'after_setup_theme', 'rtmd_menus' );
@@ -570,7 +571,7 @@ function off_canvas_nav()
 {
 	wp_nav_menu(
 	array(
-		'theme_location'  => 'off_canvas_header_menu',
+		'theme_location'  => 'content_header_menu',
 		'menu'            => '',
 		'container'       => 'div',
 		'container_class' => 'menu-{menu slug}-container',

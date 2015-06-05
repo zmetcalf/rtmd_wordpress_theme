@@ -17,26 +17,61 @@
 	</head>
 	<body <?php body_class(); ?>>
 
-		<!-- wrapper -->
-		<div class="wrapper">
+    <div class="row">
+      <div class="large-12 columns">
+        <div class="right hide-for-small-only">
+          <ul class="inline-list social_icons">
+            <li><a href="https://www.youtube.com/user/RebuildDenver"><i class="fa fa-youtube fa-2x"></i></a></li>
+            <li><a href="https://twitter.com/RTMetroDenver"><i class="fa fa-twitter fa-2x"></i></a></li>
+            <li><a href="https://www.facebook.com/RebuildingDenver"><i class="fa fa-facebook fa-2x"></i></a></li>
+          </ul>
+        </div>
+        <a href="<?php echo home_url(); ?>">
+            <!-- svg logo - toddmotto.com/mastering-svg-use-for-a-retina-web-fallbacks-with-png-script -->
+          <img class="header_logo" src="<?php echo get_template_directory_uri(); ?>/image/logo.png" alt="<?php bloginfo( 'name' ); ?>">
+        </a>
+      </div>
+    </div>
 
-			<!-- header -->
-			<header class="header clear" role="banner">
+    <div class="off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
 
-					<!-- logo -->
-					<div class="logo">
-						<a href="<?php echo home_url(); ?>">
-							<!-- svg logo - toddmotto.com/mastering-svg-use-for-a-retina-web-fallbacks-with-png-script -->
-							<img src="<?php echo get_template_directory_uri(); ?>/img/logo.svg" alt="Logo" class="logo-img">
-						</a>
-					</div>
-					<!-- /logo -->
+        <div class="row">
+          <div class="large-12 columns">
+            <div class="sticky">
+              <nav class="top-bar hide-for-small-only" data-topbar role="navigation">
+                <section class="top-bar-section">
+                  <ul class="left">
+                    <li><a href="#">Link 1</a></li>
+                    <li><a href="#">Link 2</a></li>
+                    <li class="has-dropdown">
+                      <a href="#">Link 3</a>
+                      <ul class="dropdown">
+                        <li><a href="#">Link 4</a></li>
+                      </ul>
+                   </li>
+                 </ul>
+               </section>
+              </nav>
+            </div>
+          </div>
+        </div>
 
-					<!-- nav -->
-					<nav class="nav" role="navigation">
-						<?php html5blank_nav(); ?>
-					</nav>
-					<!-- /nav -->
+        <nav class="tab-bar show-for-small">
+          <a class="left-off-canvas-toggle menu-icon" aria-expanded="true"><span></span></a>
+        </nav>
+        <aside class="left-off-canvas-menu">
+          <ul class="off-canvas-list">
+            <li><a href="#">Link 1</a></li>
+            <li><a href="#">Link 2</a></li>
+            <li class="has-submenu">
+              <a href="#">Link 3</a>
+              <ul class="left-submenu">
+                <li class="back"><a href="#">Back</a></li>
+                <li><a href="#">Link 4</a></li>
+              </ul>
+            </li>
+          </ul>
+        </aside>
 
-			</header>
-			<!-- /header -->
+        <hr/>
