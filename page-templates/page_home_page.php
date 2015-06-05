@@ -1,3 +1,7 @@
+<?php
+/* Template Name: Home Page Template */
+?>
+
 <?php get_header( 'home' ); ?>
 
 <div class="row">
@@ -107,6 +111,6 @@
       <p>Our Projects</p>
     </div>
   </div>
-
+</div>
 
 <?php get_footer(); ?>

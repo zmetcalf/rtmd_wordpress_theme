@@ -17,13 +17,13 @@
 	</head>
 	<body <?php body_class(); ?>>
 
-    <!-- Page wrap -->
+    <!-- off-canvas-wrap -->
     <div class="row">
-      <!-- Page columns -->
+      <!-- inner-wrap -->
       <div class="large-12 columns">
         <a href="<?php echo home_url(); ?>">
             <!-- svg logo - toddmotto.com/mastering-svg-use-for-a-retina-web-fallbacks-with-png-script -->
-          <img class="header_logo" src="<?php echo get_template_directory_uri(); ?>/image/logo.png" alt="<?php wp_title(''); ?>">
+          <img class="header_logo" src="<?php echo get_template_directory_uri(); ?>/image/logo.png" alt="<?php bloginfo( 'name' ); ?>">
         </a>
 
         <!-- nav -->

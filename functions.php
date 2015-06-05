@@ -344,7 +344,7 @@ function html5blankcomments($comment, $args, $depth)
 // add_action('wp_print_scripts', 'html5blank_conditional_scripts'); // Add Conditional Page Scripts
 add_action('get_header', 'enable_threaded_comments'); // Enable Threaded Comments
 // add_action('wp_enqueue_scripts', 'html5blank_styles'); // Add Theme Stylesheet
-add_action('init', 'register_html5_menu'); // Add HTML5 Blank Menu
+// add_action('init', 'register_html5_menu'); // Add HTML5 Blank Menu
 // add_action('init', 'create_post_type_html5'); // Add our HTML5 Blank Custom Post Type
 add_action('widgets_init', 'my_remove_recent_comments_style'); // Remove inline Recent Comment Styles from wp_head()
 add_action('init', 'html5wp_pagination'); // Add our HTML5 Pagination
@@ -460,8 +460,10 @@ function html5_shortcode_demo_2($atts, $content = null) // Demo Heading H2 short
 function rtmd_theme_scripts() {
   wp_enqueue_style( 'rtmd_main_style', get_template_directory_uri() .
                     '/css/app.css' );
-  wp_enqueue_style( 'rtmd_main_style', get_template_directory_uri() .
+  wp_enqueue_style( 'font-awesome', get_template_directory_uri() .
                     '/bower_components/fontawesome/css/font-awesome.min.css' );
+  wp_enqueue_style( 'slick', get_template_directory_uri() .
+                    '/bower_components/slick.js/slick/slick.css' );
   wp_enqueue_script( 'rtmd_jquery', get_template_directory_uri() .
                      '/bower_components/jquery/dist/jquery.min.js', false, '0.0.1', true );
   wp_enqueue_script( 'foundation', get_template_directory_uri() .
@@ -477,6 +479,15 @@ function rtmd_theme_scripts() {
 }
 
 add_action( 'wp_enqueue_scripts', 'rtmd_theme_scripts' );
+
+
+// Add Custom Menus
+
+function rtmd_menus() {
+  register_nav_menu( 'home_header_menu', __( 'Home Menu', 'rtmd_theme' ) );
+}
+
+add_action( 'after_setup_theme', 'rtmd_menus' );
 
 
 // Home navigation
@@ -497,9 +508,9 @@ class Walker_Home_Button_Menu extends Walker {
    * Note: Menu objects include url and title properties, so we will use those.
    */
   function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
-    $output .= sprintf( "\n<li><a href='%s'%s>%s</a></li>\n",
+    $output .= sprintf( "\n<li><a href='%s'%s class='button radius'>%s</a></li>\n",
       $item->url,
-      ( $item->object_id === get_the_ID() ) ? ' class="button radius"' : '',
+      ( $item->object_id === get_the_ID() ) ? ' class=""' : '',
       $item->title
     );
   }
@@ -511,7 +522,7 @@ function home_nav()
 	array(
 		'theme_location'  => 'home_header_menu',
 		'menu'            => '',
-		'container'       => '',
+		'container'       => false,
 		'container_class' => '',
 		'container_id'    => '',
 		'menu_class'      => '',
@@ -524,7 +535,7 @@ function home_nav()
 		'link_after'      => '',
 		'items_wrap'      => '<ul class="button-group right">%3$s</ul>',
 		'depth'           => 0,
-		'walker'          => 'Walker_Home_Button_Menu'
+		'walker'          => new Walker_Home_Button_Menu()
 		)
 	);
 }
