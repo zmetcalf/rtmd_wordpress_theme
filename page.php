@@ -37,7 +37,7 @@
   </div>
 
   <aside class="large-3 columns">
-  <?php get_sidebar(); ?>
+    <?php get_sidebar(); ?>
   </aside>
 </div>
 
