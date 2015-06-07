@@ -542,14 +542,50 @@ function home_nav()
 }
 
 // Content nav
+
+// Custom walker for content menu
+
+class Walker_Content_Menu extends Walker_Nav_Menu {
+
+  // Tell Walker where to inherit it's parent and id values
+  var $db_fields = array(
+    'parent' => 'menu_item_parent',
+    'id'     => 'db_id'
+  );
+
+  function display_element( $element, &$children_elements, $max_depth, $depth=0, $args, &$output ) {
+    $element->has_children = !empty( $children_elements[$element->ID] );
+    $element->classes[] = ( $element->current || $element->current_item_ancestor ) ? 'active' : '';
+    $element->classes[] = ( $element->has_children ) ? 'has-dropdown' : '';
+
+    parent::display_element( $element, $children_elements, $max_depth, $depth, $args, $output );
+  }
+
+  function start_lvl( &$output, $depth = 0, $args = array() ) {
+      // depth dependent classes
+      $indent = ( $depth > 0  ? str_repeat( "\t", $depth ) : '' ); // code indent
+      $display_depth = ( $depth + 1); // because it counts the first submenu as 0
+      $classes = array(
+          'dropdown',
+          ( $display_depth % 2  ? 'menu-odd' : 'menu-even' ),
+          ( $display_depth >=2 ? 'sub-sub-menu' : '' ),
+          'menu-depth-' . $display_depth
+          );
+      $class_names = implode( ' ', $classes );
+
+      // build html
+      $output .= "\n" . $indent . '<ul class="' . $class_names . '">' . "\n";
+  }
+}
+
 function content_nav()
 {
 	wp_nav_menu(
 	array(
 		'theme_location'  => 'content_header_menu',
 		'menu'            => '',
-		'container'       => 'div',
-		'container_class' => 'menu-{menu slug}-container',
+		'container'       => false,
+		'container_class' => '',
 		'container_id'    => '',
 		'menu_class'      => 'menu',
 		'menu_id'         => '',
@@ -559,24 +595,60 @@ function content_nav()
 		'after'           => '',
 		'link_before'     => '',
 		'link_after'      => '',
-		'items_wrap'      => '<ul>%3$s</ul>',
+		'items_wrap'      => '<ul class="left">%3$s</ul>',
 		'depth'           => 0,
-		'walker'          => ''
+		'walker'          => new Walker_Content_Menu()
 		)
 	);
 }
 
 // Off Canvas Nav
+
+// Custom walker for off canvas menu
+
+class Walker_Off_Canvas_Menu extends Walker_Nav_Menu {
+
+  // Tell Walker where to inherit it's parent and id values
+  var $db_fields = array(
+    'parent' => 'menu_item_parent',
+    'id'     => 'db_id'
+  );
+
+  function display_element( $element, &$children_elements, $max_depth, $depth=0, $args, &$output ) {
+    $element->has_children = !empty( $children_elements[$element->ID] );
+    $element->classes[] = ( $element->current || $element->current_item_ancestor ) ? 'active' : '';
+    $element->classes[] = ( $element->has_children ) ? 'has-submenu' : '';
+
+    parent::display_element( $element, $children_elements, $max_depth, $depth, $args, $output );
+  }
+
+  function start_lvl( &$output, $depth = 0, $args = array() ) {
+      // depth dependent classes
+      $indent = ( $depth > 0  ? str_repeat( "\t", $depth ) : '' ); // code indent
+      $display_depth = ( $depth + 1); // because it counts the first submenu as 0
+      $classes = array(
+          'left-submenu',
+          ( $display_depth % 2  ? 'menu-odd' : 'menu-even' ),
+          ( $display_depth >=2 ? 'sub-sub-menu' : '' ),
+          'menu-depth-' . $display_depth
+          );
+      $class_names = implode( ' ', $classes );
+
+      // build html
+      $output .= "\n" . $indent . '<ul class="' . $class_names . '"><li class="back"><a hfref="#">Back</a></li>' . "\n";
+  }
+}
+
 function off_canvas_nav()
 {
 	wp_nav_menu(
 	array(
 		'theme_location'  => 'content_header_menu',
 		'menu'            => '',
-		'container'       => 'div',
-		'container_class' => 'menu-{menu slug}-container',
+		'container'       => false,
+		'container_class' => '',
 		'container_id'    => '',
-		'menu_class'      => 'menu',
+		'menu_class'      => '',
 		'menu_id'         => '',
 		'echo'            => true,
 		'fallback_cb'     => 'wp_page_menu',
@@ -584,9 +656,9 @@ function off_canvas_nav()
 		'after'           => '',
 		'link_before'     => '',
 		'link_after'      => '',
-		'items_wrap'      => '<ul>%3$s</ul>',
+		'items_wrap'      => '<ul class="off-canvas-list">%3$s</ul>',
 		'depth'           => 0,
-		'walker'          => ''
+		'walker'          => new Walker_Off_Canvas_Menu()
 		)
 	);
 }

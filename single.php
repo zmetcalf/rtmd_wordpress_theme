@@ -26,7 +26,7 @@
 
 			<?php the_tags( __( 'Tags: ', 'rtmd_theme' ), ', ', '<br>'); // Separated by commas with a line break at the end ?>
 
-			<p><?php _e( 'Categorised in: ', 'rtmd_theme' ); the_category(', '); // Separated by commas ?></p>
+			<p><?php _e( 'Categorized in: ', 'rtmd_theme' ); the_category(', '); // Separated by commas ?></p>
 
 			<?php edit_post_link(); // Always handy to have Edit Post Links available ?>
 

@@ -1,4 +1,12 @@
+<?php $first_loop = true; ?>
 <?php if (have_posts()): while (have_posts()) : the_post(); ?>
+  <?php
+    if ( !$first_loop ) {
+      echo '<hr>';
+    } else {
+      $first_loop = false;
+    }
+  ?>
 
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 		<!-- post title -->

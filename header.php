@@ -41,17 +41,8 @@
             <div class="sticky">
               <nav class="top-bar hide-for-small-only" data-topbar role="navigation">
                 <section class="top-bar-section">
-                  <ul class="left">
-                    <li><a href="#">Link 1</a></li>
-                    <li><a href="#">Link 2</a></li>
-                    <li class="has-dropdown">
-                      <a href="#">Link 3</a>
-                      <ul class="dropdown">
-                        <li><a href="#">Link 4</a></li>
-                      </ul>
-                   </li>
-                 </ul>
-               </section>
+                  <?php content_nav() ?>
+                </section>
               </nav>
             </div>
           </div>
@@ -61,17 +52,7 @@
           <a class="left-off-canvas-toggle menu-icon" aria-expanded="true"><span></span></a>
         </nav>
         <aside class="left-off-canvas-menu">
-          <ul class="off-canvas-list">
-            <li><a href="#">Link 1</a></li>
-            <li><a href="#">Link 2</a></li>
-            <li class="has-submenu">
-              <a href="#">Link 3</a>
-              <ul class="left-submenu">
-                <li class="back"><a href="#">Back</a></li>
-                <li><a href="#">Link 4</a></li>
-              </ul>
-            </li>
-          </ul>
+          <?php off_canvas_nav(); ?>
         </aside>
 
         <hr/>
