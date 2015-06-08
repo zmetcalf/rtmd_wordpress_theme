@@ -8,15 +8,16 @@
 
 		<!-- article -->
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-		<!-- post thumbnail -->
-		<?php if ( has_post_thumbnail()) : // Check if thumbnail exists ?>
-		  <div class="right blogroll_image">
-        <?php the_post_thumbnail( 'blogroll_thumb' ); // Declare pixel size you need inside the array ?>
-      </div>
-		<?php endif; ?>
-		<!-- /post thumbnail -->
-
       <h1><?php the_title(); ?></h1>
+
+      <!-- post thumbnail -->
+      <?php if ( has_post_thumbnail()) : // Check if thumbnail exists ?>
+        <div class="right blogroll_image">
+          <?php the_post_thumbnail( 'blogroll_thumb' ); // Declare pixel size you need inside the array ?>
+        </div>
+      <?php endif; ?>
+      <!-- /post thumbnail -->
+
 
 			<!-- post details -->
 			<h6 class="subheader"><?php the_time('F j, Y'); ?></h6>
