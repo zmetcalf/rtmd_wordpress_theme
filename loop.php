@@ -17,16 +17,16 @@
 
 		<!-- post thumbnail -->
 		<?php if ( has_post_thumbnail()) : // Check if thumbnail exists ?>
-		  <div class="right">
+		  <div class="right blogroll_image">
         <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
-          <?php the_post_thumbnail(array(400,240)); // Declare pixel size you need inside the array ?>
+          <?php the_post_thumbnail( 'blogroll_thumb' ); // Declare pixel size you need inside the array ?>
         </a>
       </div>
 		<?php endif; ?>
 		<!-- /post thumbnail -->
 
 		<!-- post details -->
-		<span class="date"><?php the_time('F j, Y'); ?> <?php the_time('g:i a'); ?></span>
+		<h6 class="subheader"><?php the_time('F j, Y'); ?></h6>
 		<!-- /post details -->
 
 		<?php html5wp_excerpt('html5wp_index'); // Build your custom callback length in functions.php ?>

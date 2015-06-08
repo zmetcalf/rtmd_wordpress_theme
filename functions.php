@@ -221,7 +221,7 @@ function html5wp_pagination()
 // Custom Excerpts
 function html5wp_index($length) // Create 20 Word Callback for Index page Excerpts, call using html5wp_excerpt('html5wp_index');
 {
-    return 20;
+    return 40;
 }
 
 // Create 40 Word Callback for Custom Post Excerpts, call using html5wp_excerpt('html5wp_custom_post');
@@ -662,3 +662,10 @@ function off_canvas_nav()
 		)
 	);
 }
+
+
+function generate_thumbs() {
+  add_image_size( 'blogroll_thumb', 400, 240, true );
+}
+
+add_action( 'after_setup_theme', 'generate_thumbs' );

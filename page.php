@@ -8,9 +8,13 @@
 
       <div class="row">
         <div class="large-12 columns blog_content">
-          <div class="right">
-            <img src="http://placehold.it/400x240&text=[img]" alt="img"/>
-          </div>
+          <!-- post thumbnail -->
+          <?php if ( has_post_thumbnail()) : // Check if thumbnail exists ?>
+            <div class="right blogroll_image">
+              <?php the_post_thumbnail( 'blogroll_thumb' ); // Declare pixel size you need inside the array ?>
+            </div>
+          <?php endif; ?>
+          <!-- /post thumbnail -->
 
           <?php the_content(); ?>
 
