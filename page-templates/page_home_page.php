@@ -21,10 +21,7 @@
     </br>
   </div>
 
-
   <div class="large-6 columns">
-
-    <h3 class="show-for-small">Header<hr/></h3>
 
     <div class="panel">
       <h4><?php echo get_post_meta( $post->ID, 'main_block_header', TRUE ); ?><hr/></h4>
@@ -35,19 +32,22 @@
       <div class="large-6 small-6 columns">
         <div class="panel" data-equalizer-watch="small_blocks">
           <h5><?php echo get_post_meta( $post->ID, 'child_block_one_header', TRUE ); ?></h5>
-        <h6 class="subheader"><?php echo get_post_meta( $post->ID, 'child_block_one_body', TRUE ); ?></h6>
-        <?php for ($breaks = 0; $breaks < intval( get_post_meta( $post->ID, 'child_block_one_blank_space', TRUE ) ); $breaks++ ): ?>
-          <br>
-        <?php endfor; ?>
-        <a href="<?php echo get_post_meta( $post->ID, 'child_block_one_link', TRUE); ?>" class="small button large-12"><?php echo get_post_meta( $post->ID, 'child_block_one_button_text', TRUE); ?></a>
+          <h6 class="subheader"><?php echo get_post_meta( $post->ID, 'child_block_one_body', TRUE ); ?></h6>
+          <?php for ($breaks = 0; $breaks < intval( get_post_meta( $post->ID, 'child_block_one_blank_space', TRUE ) ); $breaks++ ): ?>
+            <br>
+          <?php endfor; ?>
+          <a href="<?php echo get_post_meta( $post->ID, 'child_block_one_link', TRUE); ?>" class="small button large-12"><?php echo get_post_meta( $post->ID, 'child_block_one_button_text', TRUE); ?></a>
         </div>
       </div>
 
       <div class="large-6 small-6 columns">
         <div class="panel" data-equalizer-watch="small_blocks">
-          <h5>Rebuilding Days</h5>
-          <h6 class="subheader">Find out more about the next rebuilding days.</h6>
-          <a href="#" class="small button large-12">Take a Look</a>
+          <h5><?php echo get_post_meta( $post->ID, 'child_block_two_header', TRUE ); ?></h5>
+          <h6 class="subheader"><?php echo get_post_meta( $post->ID, 'child_block_two_body', TRUE ); ?></h6>
+          <?php for ($breaks = 0; $breaks < intval( get_post_meta( $post->ID, 'child_block_two_blank_space', TRUE ) ); $breaks++ ): ?>
+            <br>
+          <?php endfor; ?>
+          <a href="<?php echo get_post_meta( $post->ID, 'child_block_two_link', TRUE); ?>" class="small button large-12"><?php echo get_post_meta( $post->ID, 'child_block_two_button_text', TRUE); ?></a>
         </div>
       </div>
     </div>
@@ -77,41 +77,39 @@
 </div>
 
 <div class="row">
-  <div class="large-12 show-for-small columns">
-    <h3>Header</h3><hr>
-  </div>
 
   <div class="large-3 small-6 columns home_quad_blocks">
-    <a href="#"></a>
-    <img src="http://placehold.it/500x500&text=Thumbnail">
+    <a href="<?php echo get_post_meta( $post->ID, 'base_widget_one_link', TRUE); ?>"></a>
+    <img src="<?php echo get_post_meta( $post->ID, 'base_widget_one_img_url', TRUE); ?>">
     <div class="panel">
-      <p>Our Sponsors</p>
+      <p><?php echo get_post_meta( $post->ID, 'base_widget_one_text', TRUE); ?></p>
     </div>
   </div>
 
   <div class="large-3 small-6 columns home_quad_blocks">
-    <a href="#"></a>
-    <img src="http://placehold.it/500x500&text=Thumbnail">
+    <a href="<?php echo get_post_meta( $post->ID, 'base_widget_two_link', TRUE); ?>"></a>
+    <img src="<?php echo get_post_meta( $post->ID, 'base_widget_two_img_url', TRUE); ?>">
     <div class="panel">
-      <p>Our Mission</p>
+      <p><?php echo get_post_meta( $post->ID, 'base_widget_two_text', TRUE); ?></p>
     </div>
   </div>
 
   <div class="large-3 small-6 columns home_quad_blocks">
-    <a href="#"></a>
-    <img src="http://placehold.it/500x500&text=Thumbnail">
+    <a href="<?php echo get_post_meta( $post->ID, 'base_widget_three_link', TRUE); ?>"></a>
+    <img src="<?php echo get_post_meta( $post->ID, 'base_widget_three_img_url', TRUE); ?>">
     <div class="panel">
-      <p>Our Group</p>
+      <p><?php echo get_post_meta( $post->ID, 'base_widget_three_text', TRUE); ?></p>
     </div>
   </div>
 
   <div class="large-3 small-6 columns home_quad_blocks">
-    <a href="#"></a>
-    <img src="http://placehold.it/500x500&text=Thumbnail">
+    <a href="<?php echo get_post_meta( $post->ID, 'base_widget_four_link', TRUE); ?>"></a>
+    <img src="<?php echo get_post_meta( $post->ID, 'base_widget_four_img_url', TRUE); ?>">
     <div class="panel">
-      <p>Our Projects</p>
+      <p><?php echo get_post_meta( $post->ID, 'base_widget_four_text', TRUE); ?></p>
     </div>
   </div>
+
 </div>
 
 <?php get_footer(); ?>
