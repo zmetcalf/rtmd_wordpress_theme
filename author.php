@@ -68,9 +68,7 @@
 
     </div>
 
-    <aside class="large-3 columns">
-      <?php get_sidebar(); ?>
-    </aside>
+    <?php get_sidebar(); ?>
   </div>
 
 <?php get_footer(); ?>

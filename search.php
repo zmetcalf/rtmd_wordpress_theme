@@ -7,10 +7,9 @@
 			<?php get_template_part('loop'); ?>
 
 			<?php get_template_part('pagination'); ?>
+		</div>
 
-    <aside class="large-3 columns">
-      <?php get_sidebar(); ?>
-    </aside>
+    <?php get_sidebar(); ?>
   </div>
 
 <?php get_footer(); ?>

@@ -1,7 +1,5 @@
 <!-- sidebar -->
-<aside class="sidebar" role="complementary">
-
-	<?php get_template_part('searchform'); ?>
+<aside class="large-3 columns">
 
 	<div class="sidebar-widget">
 		<?php if(!function_exists('dynamic_sidebar') || !dynamic_sidebar('widget-area-1')) ?>
