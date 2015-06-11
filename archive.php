@@ -1,19 +1,18 @@
 <?php get_header(); ?>
 
-	<main role="main">
-		<!-- section -->
-		<section>
+  <div class="row">
+    <div class="large-9 columns" role="main">
 
-			<h1><?php _e( 'Archives', 'html5blank' ); ?></h1>
+			<h1><?php _e( 'Archives', 'rtmd_theme' ); ?></h1>
 
 			<?php get_template_part('loop'); ?>
 
 			<?php get_template_part('pagination'); ?>
+	  </div>
 
-		</section>
-		<!-- /section -->
-	</main>
-
-<?php get_sidebar(); ?>
+    <aside class="large-3 columns">
+      <?php get_sidebar(); ?>
+    </aside>
+  </div>
 
 <?php get_footer(); ?>

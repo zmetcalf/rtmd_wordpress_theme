@@ -1,24 +1,22 @@
 <?php get_header(); ?>
-
-	<main role="main">
-		<!-- section -->
-		<section>
+  <div class="row">
+    <div class="large-9 columns" role="main">
 
 			<!-- article -->
 			<article id="post-404">
 
-				<h1><?php _e( 'Page not found', 'html5blank' ); ?></h1>
+				<h1><?php _e( 'Page not found', 'rtmd_theme' ); ?></h1>
 				<h2>
-					<a href="<?php echo home_url(); ?>"><?php _e( 'Return home?', 'html5blank' ); ?></a>
+					<a href="<?php echo home_url(); ?>"><?php _e( 'Return home?', 'rtmd_theme' ); ?></a>
 				</h2>
 
 			</article>
 			<!-- /article -->
 
-		</section>
-		<!-- /section -->
-	</main>
-
-<?php get_sidebar(); ?>
+    </div>
+    <aside class="large-3 columns">
+      <?php get_sidebar(); ?>
+    </aside>
+  </div>
 
 <?php get_footer(); ?>
