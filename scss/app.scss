@@ -60,6 +60,14 @@
   }
 }
 
+@mixin list_ease($ease) {
+  -webkit-transition: font-size $ease ease, color $ease ease, background-color $ease ease;
+  -moz-transition: font-size $ease ease, color $ease ease, background-color $ease ease;
+  -o-transition: font-size $ease ease, color $ease ease, background-color $ease ease;
+  -ms-transition: font-size $ease ease, color $ease ease, background-color $ease ease;
+  transition: font-size $ease ease, color $ease ease, background-color $ease ease;
+}
+
 /*
  * Home Page
  *
@@ -124,5 +132,28 @@ div.home_quad_blocks {
 .blogroll_image {
   img {
     margin-bottom: rem-calc(17);
+  }
+}
+
+.sidebar-widget {
+
+  ul {
+    list-style-type: none;
+  }
+
+  li {
+    a {
+      text-decoration: none;
+      color: #000;
+      display: block;
+    }
+
+    a:hover {
+      color: $rtmd_green;
+      font-size: 30px;
+      background: $ghost;
+
+      @include list_ease(0.3s);
+    }
   }
 }
