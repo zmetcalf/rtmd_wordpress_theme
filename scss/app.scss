@@ -60,12 +60,12 @@
   }
 }
 
-@mixin list_ease($ease) {
-  -webkit-transition: font-size $ease ease, color $ease ease, background-color $ease ease;
-  -moz-transition: font-size $ease ease, color $ease ease, background-color $ease ease;
-  -o-transition: font-size $ease ease, color $ease ease, background-color $ease ease;
-  -ms-transition: font-size $ease ease, color $ease ease, background-color $ease ease;
-  transition: font-size $ease ease, color $ease ease, background-color $ease ease;
+@mixin transition($transition...) {
+  -webkit-transition: $transition;
+  -moz-transition: $transition;
+  -o-transition: $transition;
+  -ms-transition: $transition;
+  transition: $transition;
 }
 
 /*
@@ -107,7 +107,18 @@ $slick-font-path: "../bower_components/slick.js/slick/fonts/";
 
 div.home_quad_blocks {
   @include linkable_block();
+
+  &:hover .panel {
+      background: $rtmd_green;
+      @include transition(background 0.3s ease);
+
+      p {
+        color: $white;
+        @include transition(color 0.3s ease);
+      }
+  }
 }
+
 
 /*
  * Content Page
@@ -151,9 +162,9 @@ div.home_quad_blocks {
     a:hover {
       color: $rtmd_green;
       font-size: 30px;
-      background: $ghost;
+      background-color: $ghost;
 
-      @include list_ease(0.3s);
+      @include transition(color 0.3s ease, font-size 0.3s ease, background-color 0.3s ease);
     }
   }
 }
