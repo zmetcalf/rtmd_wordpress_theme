@@ -450,6 +450,148 @@ function html5_shortcode_demo_2($atts, $content = null) // Demo Heading H2 short
 }
 
 //--------------------------------------------------------------------------------------------
+// Compatablity from previous theme: Clarity
+// https://themetrust.com/themes/clarity/
+// Licensed Under GPL v2
+// http://themetrust.com/license-information/
+
+add_action( 'init', 'create_post_types' );
+
+function create_post_types() {
+
+	$labels = array(
+		'name' => __( 'Projects' ),
+		'singular_name' => __( 'Project' ),
+		'add_new' => __( 'Add New' ),
+		'add_new_item' => __( 'Add New Project' ),
+		'edit' => __( 'Edit' ),
+		'edit_item' => __( 'Edit Project' ),
+		'new_item' => __( 'New Project' ),
+		'view' => __( 'View Project' ),
+		'view_item' => __( 'View Project' ),
+		'search_items' => __( 'Search Projects' ),
+		'not_found' => __( 'No projects found' ),
+		'not_found_in_trash' => __( 'No projects found in Trash' ),
+		'parent' => __( 'Parent Project' ),
+	);
+
+	$args = array(
+		'labels' => $labels,
+		'public' => true,
+		'publicly_queryable' => true,
+		'show_ui' => true,
+		'query_var' => true,
+		'rewrite' => true,
+		'capability_type' => 'post',
+		'hierarchical' => false,
+		'menu_position' => null,
+		'supports' => array('title', 'editor', 'thumbnail', 'comments', 'revisions')
+	);
+
+	register_post_type( 'projects' , $args );
+	flush_rewrite_rules( false );
+}
+
+
+
+add_action( 'init', 'create_taxonomies' );
+function create_taxonomies() {
+	$labels = array(
+    	'name' => __( 'Portfolios' ),
+    	'singular_name' => __( 'Portfolio' ),
+    	'search_items' =>  __( 'Search Portfolio' ),
+    	'all_items' => __( 'All Portfolios' ),
+    	'parent_item' => __( 'Parent Portfolio' ),
+    	'parent_item_colon' => __( 'Parent Portfolio:' ),
+    	'edit_item' => __( 'Edit Portfolio' ),
+    	'update_item' => __( 'Update Portfolio' ),
+    	'add_new_item' => __( 'Add New Portfolio' ),
+    	'new_item_name' => __( 'New Portfolio Name' )
+  	);
+
+  	register_taxonomy('portfolio','projects',array(
+    	'hierarchical' => true,
+    	'labels' => $labels,
+		'show_in_nav_menus' => true
+  	));
+  	flush_rewrite_rules( false );
+}
+
+// List custom post type taxonomies
+
+function ttrust_get_terms( $id = '' ) {
+  global $post;
+
+  if ( empty( $id ) )
+    $id = $post->ID;
+
+  if ( !empty( $id ) ) {
+    $post_taxonomies = array();
+    $post_type = get_post_type( $id );
+    $taxonomies = get_object_taxonomies( $post_type , 'names' );
+
+    foreach ( $taxonomies as $taxonomy ) {
+      $term_links = array();
+      $terms = get_the_terms( $id, $taxonomy );
+
+      if ( is_wp_error( $terms ) )
+        return $terms;
+
+      if ( $terms ) {
+        foreach ( $terms as $term ) {
+          $link = get_term_link( $term, $taxonomy );
+          if ( is_wp_error( $link ) )
+            return $link;
+          $term_links[] = '<li><span><a href="'.$link.'">' . $term->name . '</a></span></li>';
+        }
+      }
+
+      $term_links = apply_filters( "term_links-$taxonomy" , $term_links );
+      $post_terms[$taxonomy] = $term_links;
+    }
+    return $post_terms;
+  } else {
+    return false;
+  }
+}
+
+function ttrust_get_terms_list( $id = '' , $echo = true ) {
+  global $post;
+
+  if ( empty( $id ) )
+    $id = $post->ID;
+
+  if ( !empty( $id ) ) {
+    $my_terms = ttrust_get_terms( $id );
+    if ( $my_terms ) {
+      $my_taxonomies = array();
+      foreach ( $my_terms as $taxonomy => $terms ) {
+        $my_taxonomy = get_taxonomy( $taxonomy );
+        if ( !empty( $terms ) ) $my_taxonomies[] = implode( $terms);
+      }
+
+      if ( !empty( $my_taxonomies ) ) {
+	    $output = "";
+        foreach ( $my_taxonomies as $my_taxonomy ) {
+          $output .= $my_taxonomy . "\n";
+        }
+      }
+
+      if ( $echo )
+        echo $output;
+      else
+        return $output;
+    } else {
+      return;
+    }
+  } else {
+    return false;
+  }
+}
+
+
+
+//--------------------------------------------------------------------------------------------
 // Start Rebuilding Together Metro Denver Theme
 
 
@@ -466,6 +608,8 @@ function rtmd_theme_scripts() {
                     '/bower_components/slick.js/slick/slick.css' );
   wp_enqueue_script( 'rtmd_jquery', get_template_directory_uri() .
                      '/bower_components/jquery/dist/jquery.min.js', false, '0.0.1', true );
+  wp_enqueue_script( 'rtmd_jquery_migrate', get_template_directory_uri() .
+                     '/js/jquery-migrate-1.2.1.min.js', array('rtmd_jquery'), '1.2.1', true );
   wp_enqueue_script( 'foundation', get_template_directory_uri() .
                      '/bower_components/foundation/js/foundation.min.js', array('rtmd_jquery'), '0.0.1', true );
   wp_enqueue_script( 'fastclick', get_template_directory_uri() .
@@ -476,6 +620,15 @@ function rtmd_theme_scripts() {
                      '/bower_components/slick.js/slick/slick.min.js', array('rtmd_jquery'), '0.0.1', true );
   wp_enqueue_script( 'rtmd_main_script', get_template_directory_uri() .
                      '/js/app.js', array('rtmd_jquery', 'slick'), '0.0.1', true );
+
+  // Clarity Theme Files - See above for license info
+
+	wp_enqueue_script('pretty_photo', get_bloginfo('template_url').'/js/prettyPhoto_3.1.2/js/jquery.prettyPhoto.js', array('jquery'), '3.1.2', true);
+	wp_enqueue_style('pretty_photo', get_bloginfo('template_url').'/js/prettyPhoto_3.1.2/css/prettyPhoto.css', false, '3.1.2', 'all' );
+
+	wp_enqueue_script('isotope', get_bloginfo('template_url').'/js/jquery.isotope.min.js', array('jquery'), '1.3.110525', true);
+
+	wp_enqueue_script('theme_trust', get_bloginfo('template_url').'/js/theme_trust.js', array('jquery'), '1.0', true);
 }
 
 add_action( 'wp_enqueue_scripts', 'rtmd_theme_scripts' );

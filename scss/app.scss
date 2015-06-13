@@ -168,3 +168,72 @@ div.home_quad_blocks {
     }
   }
 }
+
+
+
+/*
+ * Project Page
+ *
+ */
+
+.projectNav {
+	margin: 0 0 30px 0;
+	padding-top: 0;
+
+  a {
+    display: block !important;
+    width: 35px;
+    height: 19px;
+    text-indent: -9999px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+  }
+
+  div {
+    float: left;
+    margin-right: 10px;
+    width: 35px;
+    height: 19px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+  }
+
+  .next a {
+    background: #6c6c6c url(images/project_nav_arrows.png) no-repeat;
+    background-position: -36px 0;
+  }
+
+  .next.inactive {
+    background: #c2c2c2 url(images/project_nav_arrows.png) no-repeat;
+    background-position: -36px 0;
+  }
+
+  .previous a {
+    background: #6c6c6c url(images/project_nav_arrows.png) no-repeat;
+    background-position: 0 0;
+  }
+
+  .previous.inactive {
+    background: #c2c2c2 url(images/project_nav_arrows.png) no-repeat;
+    background-position: 0 0;
+  }
+
+  a:hover {
+    background-color: #ffd800;
+  }
+
+  .portfolioHome {
+    background: #6c6c6c url(images/grid_icon.png) no-repeat;
+    width: 19px;
+    height: 19px;
+    display: block;
+    text-indent: -9999px;
+    float: left;
+    margin-right: 10px;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+  }
+}
