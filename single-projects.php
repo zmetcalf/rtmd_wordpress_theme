@@ -34,7 +34,7 @@ endif;
           </div>
         </div> <!-- end navigation -->
 
-        <h1><?php the_title(); ?></h1>
+        <h4><?php the_title(); ?></h4>
 
 
         <?php $project_notes = get_post_meta($post->ID, "_ttrust_notes_value", true); ?>

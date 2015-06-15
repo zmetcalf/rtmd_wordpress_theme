@@ -819,6 +819,13 @@ function off_canvas_nav()
 
 function generate_thumbs() {
   add_image_size( 'blogroll_thumb', 400, 240, true );
+
+  // HTML5 Sizes
+  add_image_size('medium', 250, '', true);
+  add_image_size('small', 120, '', true);
+
+  // Clarity Thumbsizes
+  add_image_size('ttrust_one_fourth_cropped', 220, 220, true);
 }
 
 add_action( 'after_setup_theme', 'generate_thumbs' );
