@@ -825,7 +825,12 @@ function generate_thumbs() {
   add_image_size('small', 120, '', true);
 
   // Clarity Thumbsizes
+  add_image_size('ttrust_post_thumb_big', 720, 220, true);
+  add_image_size('ttrust_post_thumb_small', 150, 150, true);
+  add_image_size('ttrust_post_thumb_tiny', 50, 50, true);
   add_image_size('ttrust_one_fourth_cropped', 220, 220, true);
+  add_image_size('ttrust_three_fourth', 720, 290, true);
+  add_image_size('ttrust_one_fourth', 220, 9999);
 }
 
 add_action( 'after_setup_theme', 'generate_thumbs' );
