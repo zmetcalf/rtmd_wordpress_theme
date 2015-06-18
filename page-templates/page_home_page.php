@@ -29,24 +29,18 @@
     </div>
 
     <div class="row" data-equalizer="small_blocks">
-      <div class="large-6 small-6 columns">
+      <div class="large-6 medium-6 columns">
         <div class="panel" data-equalizer-watch="small_blocks">
           <h5><?php echo get_post_meta( $post->ID, 'child_block_one_header', TRUE ); ?></h5>
           <h6 class="subheader"><?php echo get_post_meta( $post->ID, 'child_block_one_body', TRUE ); ?></h6>
-          <?php for ($breaks = 0; $breaks < intval( get_post_meta( $post->ID, 'child_block_one_blank_space', TRUE ) ); $breaks++ ): ?>
-            <br>
-          <?php endfor; ?>
           <a href="<?php echo get_post_meta( $post->ID, 'child_block_one_link', TRUE); ?>" class="small button large-12"><?php echo get_post_meta( $post->ID, 'child_block_one_button_text', TRUE); ?></a>
         </div>
       </div>
 
-      <div class="large-6 small-6 columns">
+      <div class="large-6 medium-6 columns">
         <div class="panel" data-equalizer-watch="small_blocks">
           <h5><?php echo get_post_meta( $post->ID, 'child_block_two_header', TRUE ); ?></h5>
           <h6 class="subheader"><?php echo get_post_meta( $post->ID, 'child_block_two_body', TRUE ); ?></h6>
-          <?php for ($breaks = 0; $breaks < intval( get_post_meta( $post->ID, 'child_block_two_blank_space', TRUE ) ); $breaks++ ): ?>
-            <br>
-          <?php endfor; ?>
           <a href="<?php echo get_post_meta( $post->ID, 'child_block_two_link', TRUE); ?>" class="small button large-12"><?php echo get_post_meta( $post->ID, 'child_block_two_button_text', TRUE); ?></a>
         </div>
       </div>
