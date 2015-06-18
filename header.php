@@ -55,4 +55,6 @@
           <?php off_canvas_nav(); ?>
         </aside>
 
-        <hr/>
+        <div class="hide-for-small-only">
+          <hr/>
+        </div>

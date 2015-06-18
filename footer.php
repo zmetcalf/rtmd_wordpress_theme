@@ -1,11 +1,7 @@
     <footer class="row">
       <hr/>
       <div class="large-12 columns">
-        <div class="row">
-          <div class="left">
-            <p>&copy; <?php echo date('Y'); ?> <a href="<?php echo home_url(); ?>"><?php bloginfo( 'name' ); ?></a></p>
-          </div>
-        </div>
+        <p>&copy; <?php echo date('Y'); ?> <a href="<?php echo home_url(); ?>"><?php bloginfo( 'name' ); ?></a></p>
       </div>
     </footer>
   </div> <!-- inner-wrap -->

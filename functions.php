@@ -788,8 +788,9 @@ class Walker_Off_Canvas_Menu extends Walker_Nav_Menu {
       $class_names = implode( ' ', $classes );
 
       // build html
-      $output .= "\n" . $indent . '<ul class="' . $class_names . '"><li class="back"><a hfref="#">Back</a></li>' . "\n";
+      $output .= "\n" . $indent . '<ul class="' . $class_names . '"><li class="back"><a href="#">Back</a></li>' . "\n";
   }
+
 }
 
 function off_canvas_nav()
