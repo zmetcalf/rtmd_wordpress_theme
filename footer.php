@@ -1,5 +1,13 @@
     <footer class="row">
       <hr/>
+      <div class="row show-for-small-only">
+        <div class="large-12 columns">
+          <ul class="inline-list">
+           <?php get_template_part( 'partial', 'social_media' ); ?>
+          </ul>
+        </div>
+        <hr/>
+      </div>
       <div class="large-12 columns">
         <p>&copy; <?php echo date('Y'); ?> <a href="<?php echo home_url(); ?>"><?php bloginfo( 'name' ); ?></a></p>
       </div>
