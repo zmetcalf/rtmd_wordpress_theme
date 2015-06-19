@@ -104,6 +104,13 @@ $slick-font-path: "../bower_components/slick.js/slick/fonts/";
 }
 
 
+// For large layouts added styling
+
+.child_block_link {
+  padding-top: rem-calc(16);
+}
+
+
 // Make bottom home blocks linkable
 
 div.home_quad_blocks {
