@@ -1,6 +1,6 @@
 <?php get_header(); ?>
   <div class="row">
-    <div class="large-9 columns" role="main">
+    <div class="large-9 medium-8 columns" role="main">
 
 			<!-- article -->
 			<article id="post-404">
@@ -14,9 +14,7 @@
 			<!-- /article -->
 
     </div>
-    <aside class="large-3 columns">
-      <?php get_sidebar(); ?>
-    </aside>
+    <?php get_sidebar(); ?>
   </div>
 
 <?php get_footer(); ?>

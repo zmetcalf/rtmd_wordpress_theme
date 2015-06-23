@@ -1,5 +1,5 @@
 <!-- sidebar -->
-<aside class="large-3 columns">
+<aside class="large-3 medium-4 columns">
   <div class="show-for-small-only">
     <hr>
   </div>

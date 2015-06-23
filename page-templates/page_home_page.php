@@ -38,7 +38,7 @@
               <a href="<?php echo get_post_meta( $post->ID, 'child_block_one_link', TRUE); ?>"> <?php echo get_post_meta( $post->ID, 'child_block_one_button_text', TRUE); ?></a>
             </div>
           </h6>
-          <a href="<?php echo get_post_meta( $post->ID, 'child_block_one_link', TRUE); ?>" class="small button large-12 hide-for-large-only"><?php echo get_post_meta( $post->ID, 'child_block_one_button_text', TRUE); ?></a>
+          <a href="<?php echo get_post_meta( $post->ID, 'child_block_one_link', TRUE); ?>" class="child_block_link_button small button large-12 hide-for-large-only"><?php echo get_post_meta( $post->ID, 'child_block_one_button_text', TRUE); ?></a>
         </div>
       </div>
 
@@ -51,7 +51,7 @@
               <a href="<?php echo get_post_meta( $post->ID, 'child_block_two_link', TRUE); ?>"> <?php echo get_post_meta( $post->ID, 'child_block_two_button_text', TRUE); ?></a>
             </div>
           </h6>
-          <a href="<?php echo get_post_meta( $post->ID, 'child_block_two_link', TRUE); ?>" class="small button large-12 hide-for-large-only"><?php echo get_post_meta( $post->ID, 'child_block_two_button_text', TRUE); ?></a>
+          <a href="<?php echo get_post_meta( $post->ID, 'child_block_two_link', TRUE); ?>" class="child_block_link_button small button large-12 hide-for-large-only"><?php echo get_post_meta( $post->ID, 'child_block_two_button_text', TRUE); ?></a>
         </div>
       </div>
     </div>

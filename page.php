@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 <div class="row">
-  <div class="large-9 columns" role="main">
+  <div class="large-9 medium-8 columns" role="main">
     <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<h1><?php the_title(); ?></h1>
 

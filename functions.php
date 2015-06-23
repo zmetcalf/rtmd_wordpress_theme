@@ -825,6 +825,7 @@ function foundation_pagination( $p = 2 ) {
 	global $wp_query, $paged;
 	$max_page = $wp_query->max_num_pages;
 	if ( $max_page == 1 ) return;
+	echo '<hr>'; // Add line when pagination shows
 	if ( empty( $paged ) ) $paged = 1;
 	if ( $paged > $p + 1 ) p_link( 1, 'First' );
 	if ( $paged > $p + 2 ) echo '<li class="unavailable"><a href="#">&hellip;</a></li>';

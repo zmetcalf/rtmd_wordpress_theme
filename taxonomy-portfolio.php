@@ -8,7 +8,7 @@ $child_of = ($term->parent == 0) ? $term->term_id : $term->parent;
 ?>
 
   <div class="row">
-    <div class="large-3 columns">
+    <div class="large-3 medium-3 columns">
 
 		<div id="pageHead">
 			<h1><?php echo $term->name; ?></h1>
@@ -49,7 +49,7 @@ $child_of = ($term->parent == 0) ? $term->term_id : $term->parent;
 		));
 		?>
 
-    <div class="large-9 columns <?php echo $content_class; ?> clearfix"  id="content" role="main">
+    <div class="large-9 medium-9 columns <?php echo $content_class; ?> clearfix"  id="content" role="main">
 
 			<div id="projects">
 
