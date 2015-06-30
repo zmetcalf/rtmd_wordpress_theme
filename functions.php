@@ -858,3 +858,36 @@ function generate_thumbs() {
 }
 
 add_action( 'after_setup_theme', 'generate_thumbs' );
+
+// Previous settings from previous theme
+
+//-------Google Map------------------------------------------------------------
+add_action('wp_enqueue_scripts', 'child_add_scripts');
+
+function child_add_scripts() {
+  wp_register_script(
+    'google-maps',
+    '//maps.googleapis.com/maps/api/js?key=AIzaSyC2TMqyLsJ_CxL97T42ghxL0PWzNHmbSlE&sensor=false'
+  );
+
+  wp_register_script(
+    'google-map-script',
+    get_stylesheet_directory_uri().'/js/google-map-script.js'
+  );
+
+  // Loads Google Map page on Contact Us only
+  if(is_page(33)) {
+    wp_enqueue_script('google-maps');
+    wp_enqueue_script('google-map-script');
+  }
+}
+//------------------------------------------------------------------------------
+
+//------Expire Cookies in two hours---------------------------------------------
+remove_filter('login_form_', 'post_password_expires');
+add_filter('post_password_expires', 'expire_with_session');
+
+function expire_with_session() {
+  return 0;
+}
+//------------------------------------------------------------------------------
