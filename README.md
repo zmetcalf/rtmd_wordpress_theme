@@ -1,4 +1,4 @@
-# Rebuilding Together Metro Denver Theme
+# Rebuilding Together Metro Denver WordPress Theme
 
 This is the source to the WordPress theme for RTMD's website.
 It was developed with Foundation, SASS, Slick.js and HTML5 Blank theme.
