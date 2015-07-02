@@ -5,7 +5,6 @@
 <?php get_header( 'home' ); ?>
 
 <div class="row">
-
   <div class="large-6 columns">
     <div class="row">
       <div class="large-12 large-offset-0 medium-10 medium-offset-1 small-10 small-offset-1 columns">
@@ -18,13 +17,13 @@
         </div>
       </div>
     </div>
-    </br>
+    <br>
   </div>
 
   <div class="large-6 columns">
 
     <div class="panel">
-      <h4><?php echo get_post_meta( $post->ID, 'main_block_header', TRUE ); ?><hr/></h4>
+      <h4><?php echo get_post_meta( $post->ID, 'main_block_header', TRUE ); ?></h4><hr />
       <h5 class="subheader"><?php echo get_post_meta( $post->ID, 'main_block_body', TRUE); ?></h5>
     </div>
 
