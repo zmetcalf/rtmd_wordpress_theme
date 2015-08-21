@@ -230,6 +230,11 @@ function html5wp_custom_post($length)
     return 40;
 }
 
+function home_recent_post($length) // Create 20 Word Callback for Index page Excerpts, call using html5wp_excerpt('html5wp_index');
+{
+    return 20;
+}
+
 // Create the Custom Excerpts callback
 function html5wp_excerpt($length_callback = '', $more_callback = '')
 {

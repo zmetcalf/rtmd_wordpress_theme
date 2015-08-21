@@ -152,4 +152,61 @@
 
 </div>
 
+<div class="row" data-equalizer="news_blocks">
+  <div class="large-6 medium-6 columns">
+    <div class="panel collapse" data-equalizer-watch="news_blocks">
+        <?php
+          $query = new WP_Query( array(
+            'post_type' => 'post',
+            'post_status' => 'publish',
+            'posts_per_page' => 1,
+            'order_by' => 'date',
+            'order' => 'DESC',
+          ) );
+
+          if ( $query->have_posts() ) {
+            while ( $query->have_posts() ):
+              $query->the_post(); ?>
+
+              <?php if ( has_post_thumbnail() ) : ?>
+                <div class="left recent_thumb">
+                  <?php the_post_thumbnail( 'small' ); ?>
+                </div>
+              <?php endif; ?>
+
+                <h5><?php the_title(); ?></h5>
+            <?php html5wp_excerpt('home_recent_post'); ?>
+            <?php endwhile; ?>
+          <?php
+          } else {
+            // no posts found
+          }
+          wp_reset_postdata();
+        ?>
+    </div>
+  </div>
+  <div class="large-6 medium-6 columns">
+    <div class="panel" data-equalizer-watch="news_blocks">
+    <?php
+      $query = new WP_Query( array(
+        'post_type' => 'chesterfield_news',
+        'post_status' => 'publish',
+        'posts_per_page' => 1,
+        'order_by' => 'date',
+        'order' => 'DESC',
+      ) );
+
+      if ( $query->have_posts() ) {
+        while ( $query->have_posts() ) {
+          $query->the_post();
+          the_content();
+        }
+      } else {
+        // no posts found
+      }
+      wp_reset_postdata();
+    ?>
+    </div>
+  </div>
+</div>
 <?php get_footer(); ?>
