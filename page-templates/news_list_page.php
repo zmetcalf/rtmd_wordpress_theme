@@ -5,6 +5,7 @@
 
   <div class="row">
     <div class="large-9 medium-8 columns" role="main">
+			<h1><?php the_title(); ?></h1>
 
     <?php
       $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
