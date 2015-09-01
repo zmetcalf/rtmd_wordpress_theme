@@ -9,7 +9,12 @@
         <hr/>
       </div>
       <div class="large-12 columns">
-        <p>&copy; <?php echo date('Y'); ?> <a href="<?php echo home_url(); ?>"><?php bloginfo( 'name' ); ?></a></p>
+        <div class="left">
+          <p>&copy; <?php echo date('Y'); ?> <a href="<?php echo home_url(); ?>"><?php bloginfo( 'name' ); ?></a></p>
+        </div>
+        <div class="right">
+          <p>Rebuilding Together Metro Denver is a 501(c)3 nonprofit organization.</p>
+        </div>
       </div>
     </footer>
   </div> <!-- inner-wrap -->
