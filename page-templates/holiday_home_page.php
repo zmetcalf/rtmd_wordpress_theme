@@ -8,7 +8,7 @@
   <div class="large-6 columns">
     <div class="panel" data-equalizer-watch="mast_ad_blocks">
       <div class="home_quad_blocks">
-        <a href="<?php echo get_post_meta( $post->ID, 'mast_ad_left_link', TRUE); ?>"></a>
+        <a href="<?php echo get_post_meta( $post->ID, 'mast_ad_left_link', TRUE); ?>" target="_blank"></a>
         <img src="<?php echo get_post_meta( $post->ID, 'mast_ad_left_img_url', TRUE); ?>">
       </div>
     </div>
@@ -16,7 +16,7 @@
   <div class="large-6 columns">
     <div class="panel" data-equalizer-watch="mast_ad_blocks">
       <div class="home_quad_blocks">
-        <a href="<?php echo get_post_meta( $post->ID, 'mast_ad_right_link', TRUE); ?>"></a>
+        <a href="<?php echo get_post_meta( $post->ID, 'mast_ad_right_link', TRUE); ?>" target="_blank"></a>
         <img src="<?php echo get_post_meta( $post->ID, 'mast_ad_right_img_url', TRUE); ?>">
       </div>
     </div>
