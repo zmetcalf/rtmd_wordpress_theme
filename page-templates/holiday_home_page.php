@@ -46,33 +46,12 @@
       <h5 class="subheader"><?php echo get_post_meta( $post->ID, 'main_block_body', TRUE); ?></h5>
     </div>
 
-    <div class="row" data-equalizer="small_blocks">
-      <div class="large-6 medium-6 columns">
-        <div class="panel" data-equalizer-watch="small_blocks">
-          <h5><?php echo get_post_meta( $post->ID, 'child_block_one_header', TRUE ); ?></h5>
-          <h6 class="subheader">
-            <?php echo get_post_meta( $post->ID, 'child_block_one_body', TRUE ); ?>
-            <div class="child_block_link show-for-large-only">
-              <a href="<?php echo get_post_meta( $post->ID, 'child_block_one_link', TRUE); ?>"> <?php echo get_post_meta( $post->ID, 'child_block_one_button_text', TRUE); ?></a>
-            </div>
-          </h6>
-          <div class="hide-for-large-only">
-            <a href="<?php echo get_post_meta( $post->ID, 'child_block_one_link', TRUE); ?>" class="child_block_link_button small button large-12"><?php echo get_post_meta( $post->ID, 'child_block_one_button_text', TRUE); ?></a>
-          </div>
-        </div>
-      </div>
-
-      <div class="large-6 medium-6 columns">
-        <div class="panel" data-equalizer-watch="small_blocks">
-          <h5><?php echo get_post_meta( $post->ID, 'child_block_two_header', TRUE ); ?></h5>
-          <h6 class="subheader">
-            <?php echo get_post_meta( $post->ID, 'child_block_two_body', TRUE ); ?>
-            <div class="child_block_link show-for-large-only">
-              <a href="<?php echo get_post_meta( $post->ID, 'child_block_two_link', TRUE); ?>"> <?php echo get_post_meta( $post->ID, 'child_block_two_button_text', TRUE); ?></a>
-            </div>
-          </h6>
-          <div class="hide-for-large-only">
-            <a href="<?php echo get_post_meta( $post->ID, 'child_block_two_link', TRUE); ?>" class="child_block_link_button small button large-12"><?php echo get_post_meta( $post->ID, 'child_block_two_button_text', TRUE); ?></a>
+    <div class="row">
+      <div class="large-12 columns">
+        <div class="panel">
+          <div class="home_quad_blocks">
+            <a href="<?php echo get_post_meta( $post->ID, 'sub_block_link', TRUE); ?>" target="_blank"></a>
+            <img src="<?php echo get_post_meta( $post->ID, 'sub_block_img', TRUE); ?>">
           </div>
         </div>
       </div>
