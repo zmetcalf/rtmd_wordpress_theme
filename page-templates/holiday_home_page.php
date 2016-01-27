@@ -3,6 +3,8 @@
 ?>
 
 <?php get_header( 'home' ); ?>
+<?php if( get_post_meta( $post->ID, 'mast_ad_left_img_url', TRUE) &&
+          get_post_meta( $post->ID, 'mast_ad_right_img_url', TRUE) ): ?>
 
 <div class="row" data-equalizer="mast_ad_blocks">
   <div class="large-6 columns">
@@ -22,6 +24,7 @@
     </div>
   </div>
 </div>
+<?php endif; ?>
 
 <div class="row">
   <div class="large-6 columns">
